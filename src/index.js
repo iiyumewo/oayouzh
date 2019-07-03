@@ -70,7 +70,7 @@ let thread = getParameter('thread');
 
 //let mode = location.href.indexOf('wide') > -1 ? 'wide' : 'normal';
 //紧急修复
-let mode = "temp";
+let mode = "normal";
 if (location.href.indexOf('wide') > -1) {
   mode = "wide";
 } 

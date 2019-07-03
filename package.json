@@ -1,15 +1,18 @@
 {
   "name": "zhuoyao-radar",
   "version": "1.0.0",
+  "main": "main.js",
   "description": "tencent zhuoyao radar projcet for web",
   "author": "",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV='development' node ./build/dev-server.js",
-    "build": "cross-env NODE_ENV='production' node ./build/build.js"
+    "build": "cross-env NODE_ENV='production' node ./build/build.js",
+    "electron": "npm run build && electron main.js"
   },
   "dependencies": {
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "axios": "^0.19.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -25,6 +28,7 @@
     "core-js": "^2.6.5",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
+    "electron": "^5.0.6",
     "element-ui": "^2.8.2",
     "es6-promise-polyfill": "^1.2.0",
     "eslint-friendly-formatter": "^4.0.1",

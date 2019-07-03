@@ -241,50 +241,80 @@ div.el-switch {
     padding-top:5px;
   }
   .el-dialog {
-    width:90%;
-    height:90%;
-    margin-top:50px!important;
-    @media (min-width: 768px) {
-      width:700px;
-      height:500px;
-      margin-top:calc(50vh - 250px)!important;
-    }
-    @media (min-width: 1280px) {
-      width:1000px;
-    }
+    width:80%;
+    //height:90%;
+    //margin-top:50px!important;
+    //@media (min-width: 768px) {
+    //  width:700px;
+    //  height:500px;
+    //  margin-top:calc(50vh - 250px)!important;
+    //}
+    //@media (min-width: 1280px) {
+    //  width:1000px;
+    //}
   }
   .filter-list {
     max-height:calc(90vh - 140px);
     overflow: auto;
+    margin-bottom: 20px;
     @media (min-width: 768px) {
       max-height:400px;
     }
+    .filter-name {
+      margin-left: 8px;
+      position: relative;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .filter-name:before {
+      position: absolute;
+      left: -8px;
+      content: "";
+      width: 3px;
+      height: 100%;
+      background-color: #1989fa;
+    }
+    .filter-set {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
   .filter-content {
-    border-radius:9px;
+    min-width: 50px;
+    border-radius:4px;
     cursor: pointer;
     transition:background-color .5s;
     background-color:transparent;
     margin-bottom:3px;
-    height:30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     img {
+      display: block;
       height:30px;
       width:30px;
       border-radius:15px;
     }
     span {
+      max-width: 50px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+      display: block;
+      font-size: 12px;
+      transform: scale(0.83);
+      transform-origin: center;
       transition:color .5s;
-      position:relative;
-      bottom:7px;
       color:#333;
     }
     
-    span.active::after {
-      content:"up";
-      font-size:12px;
-      vertical-align: super;
-      color:rgb(255,50,50);
-    }
+    //span.active::after {
+    //  content:"up";
+    //  font-size:12px;
+    //  vertical-align: super;
+    //  color:rgb(255,50,50);
+    //}
     &.active {
       background-color:rgba(100,100,255,.9);
       span {

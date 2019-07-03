@@ -63,6 +63,7 @@ module.exports = {
       if (a) {
         return `https://hy.gwgo.qq.com/sync/pet/small/${a.ImgName}.png`;
       } else {
+        console.warn(e)
         return 'src/assets/images/default-head.png';
       }
     },

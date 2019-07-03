@@ -10,6 +10,7 @@ import {
   MAP_PARAMS,
   WIDE_SEARCH
 } from '../lib/config';
+import axios from 'axios';
 
 module.exports = {
   methods: {
@@ -100,11 +101,11 @@ module.exports = {
         new qq.maps.Size(40, 40)
       );
       let position = new qq.maps.LatLng(yl.latitude / 1e6, yl.longtitude / 1e6);
+
       let marker = new qq.maps.Marker({
         position: position,
         map: this.map,
         zIndex:20000,
-        clickable:false,
       });
 
       marker.setIcon(icon);
@@ -133,6 +134,12 @@ module.exports = {
       }
 
       this.markers[key] = new RadarMapMarker(markeropts);
+
+      qq.maps.event.addListener(marker, 'click', function() {
+        axios.get(`http://localhost:8080/gps/lon/${ marker.viewModel.position.lng }/lat/${ marker.viewModel.position.lat }`);
+        markeropts.marker.setVisible(false);
+        markeropts.labelMarker.setVisible(false);
+      });
     },
     buildSearchboxMarker(lat,lng,showOuter) {
       if (!this.settings.show_box) return;

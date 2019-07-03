@@ -10,7 +10,8 @@ const prodConfig = merge(baseWebpackConfig, {
   devtool: false, // 生产环境生成sourcemap
   output: {
     filename: `[name].[chunkhash:8].js`,
-    chunkFilename: `[name].[chunkhash:8].js`
+    chunkFilename: `[name].[chunkhash:8].js`,
+    publicPath: './dist/'
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html

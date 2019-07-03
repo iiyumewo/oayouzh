@@ -111,18 +111,24 @@ const FILTER = {
     return item.Id;
   }),
 
-  FILTER_CUSTOM: availableYaolings.Data.map(item => {
+  FILTER_CUSTOM: availableYaolings.Data.map(ylSet => {
+    console.log(ylSet)
     return {
-      id: item,
-      name: dataMap[item].Name,
-      img: dataMap[item].SmallImgPath,
-      on:false,
+      setName: ylSet.setName,
+      ids: ylSet.ids.map(ylId => {
+        return {
+          id: ylId,
+          name: dataMap[ylId].Name,
+          img: dataMap[ylId].SmallImgPath,
+          on:false,
+        }
+      })
     }
   })
 };
 
 const SOCKET = {
-  MAX_RECONNECT_TIME: 10, // 断线重连次数
+  MAX_RECONNECT_TIME: 99, // 断线重连次数
   MSG_INTERVAL: 5000, // 发送消息最小时间间隔
   RECONNECT_TIMEOUT: 1000, // 断线重连时间
   URL:
@@ -137,8 +143,8 @@ const BOT = {
 // MAX_RANGE: 以查询点为基准，范围查询的单元格数量
 // 例如MAX_RANGE=10。即是基准东南西北各+10，再加中心线，21*21的单元格数
 const WIDE_SEARCH = {
-  MAX_RANGE: 10, 
-  MAX_SOCKETS: 6, // 最大socket线程数
+  MAX_RANGE: 6,
+  MAX_SOCKETS: 20, // 最大socket线程数
   LAT_RANGE: 0.013754, // 单次查询纬度偏移量
   LNG_RANGE: 0.01795 // 单词查询经度偏移量
 };
