@@ -135,10 +135,6 @@ const SOCKET = {
     'wss://publicld.gwgo.qq.com?account_value=0&account_type=1&appid=0&token=0' // 官方妖灵查询接口
 };
 
-const BOT = {
-  URL: 'http://127.0.0.1:36524/api/v1/Cqp/CQ_sendGroupMsg'
-};
-
 // 官方接口每次查询的经纬度范围
 // MAX_RANGE: 以查询点为基准，范围查询的单元格数量
 // 例如MAX_RANGE=10。即是基准东南西北各+10，再加中心线，21*21的单元格数
@@ -169,6 +165,5 @@ module.exports = {
   CUR_YAOLING_VERSION,
   APP_VERSION,
   WIDE_SEARCH,
-  MAP_PARAMS,
-  BOT
+  MAP_PARAMS
 };
