@@ -120,7 +120,7 @@ const FILTER = {
           id: ylId,
           name: dataMap[ylId].Name,
           img: dataMap[ylId].SmallImgPath,
-          on:false,
+          on: false,
         }
       })
     }
