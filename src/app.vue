@@ -184,8 +184,6 @@
       };
     },
     mounted() {
-      console.log("enter")
-      console.log(this.settings.custom_filter)
       // 初始化地图组件
       this.initMap();
 
@@ -253,6 +251,21 @@
           new qq.maps.LatLng(this.location.latitude, this.location.longitude)
         );
       }
+
+      setInterval(async () => {
+        if (!this.clickMarker) {
+          return
+        }
+        const offsetDistance = 0.00006
+        let random1 = offsetDistance - offsetDistance*2*Math.random()
+        let random2 = offsetDistance - offsetDistance*2*Math.random()
+        let lat = this.location.latitude + random2
+        let lon = this.location.longitude + random1
+        await axios.get(`http://localhost:8080/gps/lon/${ lon }/lat/${ lat }`)
+        this.clickMarker.setPosition(
+          new qq.maps.LatLng(lat, lon)
+        );
+      }, 5000)
     },
     methods: {
       /**
@@ -278,6 +291,7 @@
       buildMarkersByData: function (t) {
         if (t && t.length) {
           t.forEach(item => {
+            console.warn(this.fit)
             if (
               this.fit[0] === 'special' ||
               this.fit.indexOf(item.sprite_id) > -1
@@ -366,11 +380,14 @@
 
         //自定义筛选优先级最高
         if (this.settings.use_custom) {
-          return Array.from(new Set(
-            this.settings.custom_filter
-              .filter(item => item.on)
-              .map(item => item.id)
-          ));
+          return [].concat(...(this.settings.custom_filter.map(item => {
+            return item.ids.filter(item => item.on).map(item => item.id)
+          })))
+          // return Array.from(new Set(
+          //   this.settings.custom_filter
+          //     .filter(item => item.on)
+          //     .map(item => item.id)
+          // ));
         }
 
         if (this.mode === 'normal') {
@@ -428,6 +445,7 @@
       settings: {
         handler: function (newV, oldV) {
           console.log('settings update...');
+          console.log(newV)
           setLocalStorage('radar_settings', this.settings);
         },
         deep: true
