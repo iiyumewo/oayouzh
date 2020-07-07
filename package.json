@@ -28,7 +28,7 @@
     "core-js": "^2.6.5",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
-    "electron": "^5.0.6",
+    "electron": "^9.1.0",
     "element-ui": "^2.8.2",
     "es6-promise-polyfill": "^1.2.0",
     "eslint-friendly-formatter": "^4.0.1",
